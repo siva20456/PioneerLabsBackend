@@ -39,6 +39,7 @@ This Node.js backend project provides user registration, login functionality, da
 - **GET /restricted**: Restricted endpoint accessible only to authenticated users.
 
 #### Swagger Documentation
+![Swagger](https://github.com/siva20456/PioneerLabsBackend/assets/85632492/a7143a16-8213-42ab-8e24-23ffc4f4bb5e)
 
 - Access Swagger UI at `/docs` endpoint for interactive API documentation.
 
