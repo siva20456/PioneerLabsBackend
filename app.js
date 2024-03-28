@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt')
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./requirements.yaml');
+require('dotenv').config()
 
 
 const verifyTheUser = require('./Middlewares/verify')
@@ -18,12 +19,11 @@ app.use(express.json())
 
 // DataBase Connection starts
 
-const MONGO_URL = 'MONGODB_CONNECTION_URL'
 
 
 // console.log(process.env.URL)
 // Create a new MongoClient
-const client = new MongoClient(MONGO_URL, {
+const client = new MongoClient(process.env.MONGO_URL, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -162,11 +162,11 @@ app.get('/restricted',verifyTheUser,async(req,res,next) => {
 
 
 app.get('/', async (req, res, next) => {
-    res.send('Welcome to 3005..!')
+    res.send('Welcome to 3005..! For Swagger direct to /docs')
 })
 
 
-app.listen(3005, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${3005}`);
 });
 
