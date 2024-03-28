@@ -14,10 +14,11 @@ This Node.js backend project provides user registration, login functionality, da
    git clone https://github.com/siva20456/PioneerLabsBackend
 
 2. Install dependencies:
+   ```
    npm install
    ```
 
-3. Set up environment variables:
+4. Set up environment variables:
    - Create a `.env` file in the project root directory.
    - Define the following environment variables:
      - `MONGODB_URI`: Connection URI for MongoDB database. = "mongodb+srv://siva2002ismart2002:1gcor0WfxhJjryWA@cluster0.jqbkgks.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -26,7 +27,8 @@ This Node.js backend project provides user registration, login functionality, da
 #### Usage
 
 1. Start the server:
-   npm start
+   ```
+    npm start
    ```
 
 2. The server will start running on port 3005 by default.
