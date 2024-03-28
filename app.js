@@ -18,10 +18,12 @@ app.use(express.json())
 
 // DataBase Connection starts
 
+const MONGO_URL = 'MONGODB_CONNECTION_URL'
+
 
 // console.log(process.env.URL)
 // Create a new MongoClient
-const client = new MongoClient('mongodb+srv://siva2002ismart2002:1gcor0WfxhJjryWA@cluster0.jqbkgks.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+const client = new MongoClient(MONGO_URL, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
