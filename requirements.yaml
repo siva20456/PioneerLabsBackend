@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Pioneer Labs Backend Docs
+  description: Documentation for API endpoints
+  version: 1.0.0
+servers:
+  - url: http://localhost:3005
+paths:
+  /Register:
+    post:
+      summary: User Registration Endpoint
+      description: Endpoint for user registration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  default: 'siva'
+                email:
+                  type: string
+                  default: 'siva@gmail.com'
+                password:
+                  type: string
+                  default: 'siva'
+      responses:
+        '200':
+          description: User registered successfully
+        '400':
+          description: Error message if registration fails
+  /login:
+    post:
+      summary: User Login Endpoint
+      description: Endpoint for user login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  default: 'sivashankar'
+                password:
+                  type: string
+                  default: 'siva'
+
+      responses:
+        '200':
+          description: User logged in successfully
+        '400':
+          description: Error message if login fails
+  /data:
+    get:
+      summary: Data Fetching Endpoint
+      description: Endpoint to fetch data with filtering options.
+      parameters:
+        - name: category
+          in: query
+          description: Category for filtering data
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Result limit
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal server error
+      security:
+        - bearerAuth: []   # This specifies that JWT token is required for this endpoint
+    
+  /restricted: 
+    get:
+      summary: Restricted Endpoint
+      description: Endpoint to Restrict access for UnAuthenticated users.
+      responses:
+        '200':
+          description: You're Authorised
+        '500':
+          description: Internal server error
+      security:
+        - bearerAuth: [] 
+      
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  # Optional, for documentation clarity
