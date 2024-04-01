@@ -126,7 +126,7 @@ app.get('/data',verifyTheUser, async (req, res) => {
         const totalData = await response.json();
         const {count, entries} = totalData
         // res.json(data); 
-        const reqData = entries.filter(e => e.Category === category) // Filtering Acc to Category 
+        const reqData = entries.filter(e => e.Category.toLowerCase() === category.toLowerCase()) // Filtering Acc to Category 
         const result =  reqData.slice(0,limit) // Limiting the result
         res.status(200).send({data:result})
     } catch (error) {
