@@ -41,20 +41,12 @@ client.connect()
     });
 const db = client.db('PioneerLabsBackEnd');
 // console.log(db.collection('users').find())
-
-app.use(
-    cors({
-        origin: '*', // Allow all origins
-        methods: '*', // Allow all methods
-        credentials: true,
-        allowedHeaders: [
-            'Content-Type',
-            'Authorization',
-            'Access-Control-Allow-Credentials',
-        ],
-    })
-);
-
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://pioneerlabsbackend.onrender.com/");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, UPDATE, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept , Authorization");
+    next()
+});
 // DataBase Connection Ends 
 
 
